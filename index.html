@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript cho người mới học</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .info {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .console-output {
+            background-color: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 TypeScript - Bài học cho người mới</h1>
+        
+        <div class="info">
+            <strong>ℹ️ Hướng dẫn:</strong> Nhấn nút dưới đây để xem kết quả chương trình TypeScript. Kết quả sẽ hiển thị trong phần "Kết quả" bên dưới.
+        </div>
+
+        <button onclick="runProgram()">▶️ Chạy chương trình</button>
+
+        <div class="info">
+            <strong>📝 Ghi chú:</strong> 
+            <ul>
+                <li>Để chạy được file này, bạn cần compile TypeScript trước: <code>tsc bai1.ts</code></li>
+                <li>Hoặc dùng: <code>tsc</code> (sẽ compile tất cả file dựa trên tsconfig.json)</li>
+                <li>File JavaScript sẽ được tạo trong thư mục <code>dist/</code></li>
+            </ul>
+        </div>
+
+        <h2>📊 Kết quả:</h2>
+        <div class="console-output" id="output">
+            <p style="color: #888;">Kết quả sẽ hiển thị ở đây...</p>
+        </div>
+    </div>
+
+    <script src="./dist/bai1.js"></script>
+</body>
+</html>
