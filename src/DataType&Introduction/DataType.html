@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to TypeScript</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container{
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2{
+            color: #007acc;
+        }
+
+        code{
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        pre{
+            background: #272822;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        ul{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Introduction to TypeScript</h1>
+
+        <p>
+            TypeScript is a programming language developed by Microsoft.
+            It is a superset of JavaScript, which means TypeScript includes
+            all JavaScript features and adds extra features such as static typing,
+            interfaces, and object-oriented programming support.
+        </p>
+
+        <h2>Why Do We Need TypeScript?</h2>
+
+        <p>
+            JavaScript is dynamically typed, which means variables can change
+            their data types during runtime. This flexibility is useful, but it
+            can also create unexpected errors.
+        </p>
+
+        <p>
+            TypeScript solves this problem by introducing static typing.
+            It checks data types before the code runs, helping developers
+            detect errors early during development.
+        </p>
+
+        <h2>Advantages of TypeScript</h2>
+
+        <ul>
+            <li>Detects errors before running the application.</li>
+            <li>Improves code readability and maintainability.</li>
+            <li>Provides better support for large-scale applications.</li>
+            <li>Offers powerful IDE features like auto-completion and IntelliSense.</li>
+            <li>Supports modern JavaScript features.</li>
+        </ul>
+
+        <h2>JavaScript Example</h2>
+
+        <p>
+            In JavaScript, variables can easily change data types:
+        </p>
+
+<pre>
+let value = "Hello";
+value = 100; // No error in JavaScript
+</pre>
+
+        <h2>TypeScript Example</h2>
+
+        <p>
+            In TypeScript, you can define the variable type:
+        </p>
+
+<pre>
+let value: string = "Hello";
+value = 100; // Error: Type 'number' is not assignable to type 'string'
+</pre>
+
+        <h2>How TypeScript Works</h2>
+
+        <p>
+            TypeScript code is converted (compiled) into JavaScript
+            because browsers only understand JavaScript.
+        </p>
+
+<pre>
+TypeScript Code  →  TypeScript Compiler  →  JavaScript Code
+</pre>
+
+        <h2>Basic TypeScript Data Types</h2>
+
+        <ul>
+            <li><code>string</code> - text values</li>
+            <li><code>number</code> - numeric values</li>
+            <li><code>boolean</code> - true or false</li>
+            <li><code>array</code> - list of values</li>
+            <li><code>any</code> - any type of value</li>
+            <li><code>tuple</code> - fixed array structure</li>
+            <li><code>enum</code> - named constants</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+
+        <p>
+            TypeScript helps developers write safer, cleaner, and more scalable code.
+            It is especially useful for large projects and team collaboration.
+            Today, many popular frameworks such as Angular, React, and Vue
+            support TypeScript.
+        </p>
+
+    </div>
+    <script src="/dist/DataType&Introduction/DataType.js"></script>
+</body>
+</html>
