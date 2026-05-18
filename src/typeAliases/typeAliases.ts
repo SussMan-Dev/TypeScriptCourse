@@ -21,3 +21,14 @@ let ducHuy: Developer = {
 
 console.log(ducHuy);
 console.log(typeof ducHuy); // "object"
+
+// type aliases to the variable
+
+const student :{
+    name:string,
+    age: number
+} = {
+    name:"Kha Banh",
+    age:19
+}
+console.log(student);
