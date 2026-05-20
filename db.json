@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "An",
+      "email": "an@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Bình",
+      "email": "binh@gmail.com"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Hello JSON Server"
+    }
+  ]
+}
