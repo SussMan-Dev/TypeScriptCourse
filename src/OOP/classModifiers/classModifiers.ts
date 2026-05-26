@@ -3,8 +3,8 @@
 // private: can only be accessed inside the class where it is declared.
 // protected: can be accessed inside the class and its child classes, but not from outside objects.
 class Dog{
-    public name:string
-    private age:number
+    public name:string;
+    private age:number;
     protected color:string
     constructor(name:string,age:number,color:string){
         this.name = name,
