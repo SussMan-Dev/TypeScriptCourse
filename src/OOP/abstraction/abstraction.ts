@@ -1,7 +1,7 @@
 // Abstraction means hiding unnecessary details and showing only what is needed.
 // An abstract class can contain normal methods and abstract methods.
 // Abstract methods do not have a body, so child classes must implement them.
-abstract class AbstractPerson {
+abstract class APerson {
     protected _name: string;
 
     constructor(name: string) {
@@ -15,26 +15,38 @@ abstract class AbstractPerson {
     abstract doWork(): void;
 }
 
-class Learner extends AbstractPerson {
+class AStudent extends APerson {
     doWork(): void {
         console.log(`${this._name} is studying TypeScript`);
     }
 }
 
-class Instructor extends AbstractPerson {
+class ATeacher extends APerson {
     doWork(): void {
         console.log(`${this._name} is teaching OOP`);
     }
 }
 
 // You cannot create an object directly from an abstract class.
-// const person = new AbstractPerson("An"); // Cannot create an instance of an abstract class.
+// const person = new Person("An"); // Cannot create an instance of an abstract class.
 
-const learner = new Learner("An");
-const instructor = new Instructor("Loi");
+const astudent = new AStudent("An");
+const ateacher = new ATeacher("Loi");
 
-learner.introduce();
-learner.doWork();
+astudent.introduce();
+astudent.doWork();
 
-instructor.introduce();
-instructor.doWork();
+ateacher.introduce();
+ateacher.doWork();
+
+let anbeoo = {
+    name: "123",
+    getName(name:string){
+        console.log(name);
+        
+    }
+}
+console.log(anbeoo);
+
+console.log(astudent);
+
