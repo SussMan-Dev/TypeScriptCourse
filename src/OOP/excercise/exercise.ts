@@ -37,8 +37,7 @@ class Teacher extends Users{
     }
     //2. polymorphism method
     override printUserInfo(): void {
-        super.printUserInfo();
-        console.log(`Courses: ${this.courses.join(", ")}`);
+        console.log(`[${this.role}]${this.name} - ${this.email} - Courses: ${this.courses.join(", ")}`);
     }
 }
 
@@ -53,7 +52,7 @@ class Learner extends Users{
     }
     override printUserInfo(): void {
         super.printUserInfo()
-        console.log(`enrolled Course: ${this.enrolledCourse.join(",")}`);
+        console.log(`[${this.role}]${this.name} - ${this.email} - enrolled Course: ${this.enrolledCourse.join(",")}`);
     }
 }
 const client = new Users("Duc Huy","huyantv@gmail.com")
