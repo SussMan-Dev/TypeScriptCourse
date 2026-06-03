@@ -16,10 +16,28 @@
             <div class="col" style="font-size: 20px;">
                 Bài Tập Thực Hành 2 - Excercise 2
             </div>
-            <div class="col">
-                <button class="btn btn-primary">Add User</button>
-            </div>
         </div>
+        <form style="padding: 20px;">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="userId" placeholder="Enter Number">
+                <label for="userId">ID</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="userName" placeholder="Enter Name">
+                <label for="userName">Name</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="userAge" placeholder="Enter Age">
+                <label for="userAge">Age</label>
+            </div>
+
+            <button type="button" id="createUser" class="btn btn-primary" onclick="AddUserForm()">
+                Submit
+            </button>
+        </form>
+        <h1>User List</h1>
         <table class="table table-bordered table-hover" style="margin-top: 20px;">
             <thead>
                 <tr>

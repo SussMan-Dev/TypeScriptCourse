@@ -22,9 +22,9 @@ let UserList: UserType[] = [
     }
 ];
 
-localStorage.setItem("users", JSON.stringify(UserList));
 
 const loadUser = () => {
+    localStorage.setItem("users", JSON.stringify(UserList));
     const userList = document.getElementById("userList");
     let users: string = "";
     const data = localStorage.getItem("users");
@@ -48,4 +48,25 @@ const loadUser = () => {
     }
 };
 
+const AddUserForm = () => {
+    let userId : number = Number(
+        (document.getElementById("userId") as HTMLInputElement).value
+    );
+
+    let userName : string = (
+        document.getElementById("userName") as HTMLInputElement
+    ).value;
+
+    let userAge: number = Number(
+        (document.getElementById("userAge") as HTMLInputElement).value
+    );
+    UserList.push(
+        {
+            ID: userId,
+            name: userName,
+            age: userAge
+        }
+    )
+    loadUser()
+}
 loadUser();
