@@ -2,30 +2,69 @@ interface Todo {
     name: string
 }
 
-let todoList: Todo[] = JSON.parse(localStorage.getItem("todoList") || "[]")
+
+
 
 const loadPage = () => {
-    localStorage.setItem("todoList", JSON.stringify(todoList))
-    console.log(todoList)
-}
+    const todoData: Todo[] = JSON.parse(
+        localStorage.getItem("todoList") || "[]"
+    );
 
+    let todoDataScripts = "";
+
+    todoData.forEach((action) => {
+        todoDataScripts += `
+        <tr>
+            <td>${action.name}</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>`;
+    });
+
+    document.getElementById("todo-table")!.innerHTML = todoDataScripts;
+};
+
+const saveToLocalStorage = (value: string): void => {
+    const todoData: Todo[] = JSON.parse(
+        localStorage.getItem("todoList") || "[]"
+    );
+
+    todoData.push({
+        name: value
+    });
+
+    localStorage.setItem(
+        "todoList",
+        JSON.stringify(todoData)
+    );
+
+    loadPage();
+};
 let addTodoBtn = document.getElementById("addTodo-btn")
-
+declare const bootstrap: any;
 addTodoBtn?.addEventListener("click", () => {
-    let todoName: string = (document.getElementById("action-name") as HTMLInputElement).value
+    const input = document.getElementById(
+        "action-name"
+    ) as HTMLInputElement;
 
-    //@ts-ignore
-    const myModal = bootstrap.Modal.getInstance(
-        document.getElementById("myModal"),
-        {
-            keyboard: false
-        }
-    )
+    const todoName = input.value.trim();
 
-    todoList.push({
-        name: todoName
-    }),
-    (document.getElementById("action-name") as HTMLInputElement).value = ``
-    myModal.hide()
-    loadPage()
-})
+    if (!todoName) {
+        return;
+    }
+
+    saveToLocalStorage(todoName);
+
+    const modalElement = document.getElementById("myModal");
+
+    if (modalElement) {
+        const modal =
+            bootstrap.Modal.getInstance(modalElement) ??
+            new bootstrap.Modal(modalElement);
+
+        modal.hide();
+    }
+
+    input.value = "";
+});
+loadPage()

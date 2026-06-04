@@ -18,7 +18,7 @@
         </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -28,8 +28,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="action-name" class="form-label">Action's Name</label>
-                            <input type="text" class="form-control" id="action-name"
-                                placeholder="do excercise etc...">
+                            <input type="text" class="form-control" id="action-name" placeholder="do excercise etc...">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -39,9 +38,16 @@
                 </div>
             </div>
         </div>
-
     </div>
-
+    <table class="table" >
+        <thead>
+            <tr>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="todo-table">
+        </tbody>
+    </table>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
