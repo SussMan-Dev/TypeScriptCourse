@@ -1,61 +1,85 @@
 interface Todo {
-    name: string
+    id: number
+    name: string;
 }
 
+const STORAGE_KEY = "todoList";
 
-
-
-const loadPage = () => {
-    const todoData: Todo[] = JSON.parse(
-        localStorage.getItem("todoList") || "[]"
+const getTodos = (): Todo[] => {
+    return JSON.parse(
+        localStorage.getItem(STORAGE_KEY) || "[]"
     );
-
-    let todoDataScripts = "";
-
-    todoData.forEach((action) => {
-        todoDataScripts += `
-        <tr>
-            <td>${action.name}</td>
-            <td>Edit</td>
-            <td>Delete</td>
-        </tr>`;
-    });
-
-    document.getElementById("todo-table")!.innerHTML = todoDataScripts;
 };
 
-const saveToLocalStorage = (value: string): void => {
-    const todoData: Todo[] = JSON.parse(
-        localStorage.getItem("todoList") || "[]"
-    );
-
-    todoData.push({
-        name: value
-    });
-
+const saveTodos = (todos: Todo[]): void => {
     localStorage.setItem(
-        "todoList",
-        JSON.stringify(todoData)
+        STORAGE_KEY,
+        JSON.stringify(todos)
     );
-
-    loadPage();
 };
-let addTodoBtn = document.getElementById("addTodo-btn")
+
+const renderTodos = (): void => {
+    const todos = getTodos();
+
+    const table = document.getElementById("todo-table");
+
+    if (!table) {
+        return;
+    }
+
+    table.innerHTML = todos
+        .map(
+            (todo) => `
+            <tr>
+                <td>${todo.id}</td>
+                <td>${todo.name}</td>
+                <td>
+                    <button class="btn btn-primary">
+                        Edit
+                    </button>
+                    <button class="btn btn-danger delete-btn" data-id="${todo.id}">Delete</button>
+                </td>
+            </tr>
+        `
+        )
+        .join("");
+};
+
+const addTodo = (id: number, name: string): void => {
+    const todos = getTodos();
+
+    todos.push({ id, name });
+
+    saveTodos(todos);
+
+    renderTodos();
+};
+
+const addTodoBtn = document.getElementById(
+    "addTodo-btn"
+);
 declare const bootstrap: any;
 addTodoBtn?.addEventListener("click", () => {
-    const input = document.getElementById(
+    const inputName = document.getElementById(
         "action-name"
-    ) as HTMLInputElement;
+    ) as HTMLInputElement | null;
+    const inputId = document.getElementById(
+        "action-id"
+    ) as HTMLInputElement | null;
+    if (!inputName || !inputId) {
+        return;
+    }
 
-    const todoName = input.value.trim();
-
+    const todoName = inputName.value.trim();
+    const todoId = Number(inputId.value)
     if (!todoName) {
         return;
     }
 
-    saveToLocalStorage(todoName);
+    addTodo(todoId, todoName);
 
-    const modalElement = document.getElementById("myModal");
+    const modalElement =
+        document.getElementById("myModal");
 
     if (modalElement) {
         const modal =
@@ -65,6 +89,29 @@ addTodoBtn?.addEventListener("click", () => {
         modal.hide();
     }
 
-    input.value = "";
+    inputId.value = "";
+    inputName.value = "";
 });
-loadPage()
+
+const deleteTodo = (inputId: number) => {
+    const todos = getTodos();
+    const newTodo = todos.filter(todo => todo.id !== inputId);
+    saveTodos(newTodo);
+    renderTodos();
+};
+
+const todoTable = document.getElementById("todo-table");
+
+todoTable?.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+
+    if (!target.classList.contains("delete-btn")) {
+        return;
+    }
+
+    const id = Number(target.dataset.id);
+
+    deleteTodo(id);
+});
+
+renderTodos();
