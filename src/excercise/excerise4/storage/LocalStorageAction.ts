@@ -1,4 +1,4 @@
-import { Todo } from "./interface/todoInterface";
+import { Todo } from "../types/todoInterface";
 
 const STORAGE_KEY = "todoList";
 

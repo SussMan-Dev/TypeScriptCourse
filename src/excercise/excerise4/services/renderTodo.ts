@@ -1,5 +1,5 @@
-import { getDataLocalStorage } from "./LocalStorageAction.js"
-import { Todo } from "./interface/todoInterface.js"
+import { getDataLocalStorage } from "../storage/LocalStorageAction.js"
+import { Todo } from "../types/todoInterface.js"
 const renderTodo = () =>{
     const todos : Todo[] = getDataLocalStorage()
     const tableData = document.getElementById("table-data") as HTMLTableSectionElement;
@@ -12,7 +12,7 @@ const renderTodo = () =>{
             <td>${todo.description}</td>
             <td>
                 <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-danger">Delete</button>                
+                <button class="btn btn-danger delete-btn">Delete</button>                
             </td>
         </tr>`
     })

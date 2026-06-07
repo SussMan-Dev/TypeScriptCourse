@@ -1,22 +1,19 @@
-import { addNewTodo, createOrLoadTodo } from "./LocalStorageAction.js"
-import { renderTodo } from "./renderTodo.js";
+import { addNewTodo, createOrLoadTodo } from "./storage/LocalStorageAction.js"
+import { renderTodo } from "./services/renderTodo.js";
 declare const bootstrap: any
 
 createOrLoadTodo();
 renderTodo()
-const addBtn = document.getElementById("addBtn");
 
+const addBtn = document.getElementById("addBtn") as HTMLButtonElement;
 addBtn?.addEventListener("click", () => {
     const newTodoName = document.getElementById("newTodoName") as HTMLInputElement;
     const newTodoDes = document.getElementById("newTodoDes") as HTMLInputElement;
 
-    if (
-        !newTodoName.value.trim() ||
-        !newTodoDes.value.trim()
-    ) {
+    if (!newTodoName.value.trim()) {
         return;
     }
-
+    
     addNewTodo({
         name: newTodoName.value,
         description: newTodoDes.value
@@ -31,4 +28,5 @@ addBtn?.addEventListener("click", () => {
 
     renderTodo();
 });
+
 
