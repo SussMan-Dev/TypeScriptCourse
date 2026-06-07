@@ -34,9 +34,7 @@ const renderTodos = (): void => {
                 <td>${todo.id}</td>
                 <td>${todo.name}</td>
                 <td>
-                    <button class="btn btn-primary">
-                        Edit
-                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTodo""> Edit</button>
                     <button class="btn btn-danger delete-btn" data-id="${todo.id}">Delete</button>
                 </td>
             </tr>
@@ -113,5 +111,8 @@ todoTable?.addEventListener("click", (event) => {
 
     deleteTodo(id);
 });
+
+
+
 
 renderTodos();
