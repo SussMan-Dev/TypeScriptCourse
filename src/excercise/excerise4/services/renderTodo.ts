@@ -8,6 +8,7 @@ const renderTodo = () =>{
         todosScripts += 
         `<tr>
             <th scope="row">${index}</th>
+            <td>${todo.id}</td>
             <td>${todo.name}</td>
             <td>${todo.description}</td>
             <td>

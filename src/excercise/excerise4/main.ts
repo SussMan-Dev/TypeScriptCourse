@@ -1,5 +1,6 @@
 import { addNewTodo, createOrLoadTodo } from "./storage/LocalStorageAction.js"
 import { renderTodo } from "./services/renderTodo.js";
+import { getRandomId } from "./types/randomID.js";
 declare const bootstrap: any
 
 createOrLoadTodo();
@@ -15,6 +16,7 @@ addBtn?.addEventListener("click", () => {
     }
     
     addNewTodo({
+        id: getRandomId(),
         name: newTodoName.value,
         description: newTodoDes.value
     });
