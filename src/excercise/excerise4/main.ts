@@ -1,6 +1,6 @@
 import { addNewTodo, createOrLoadTodo } from "./storage/LocalStorageAction.js"
 import { renderTodo } from "./services/renderTodo.js";
-import { getRandomId } from "./types/randomID.js";
+import { getRandomId } from "./services/randomID.js";
 declare const bootstrap: any
 
 createOrLoadTodo();
