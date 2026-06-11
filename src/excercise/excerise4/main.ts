@@ -1,6 +1,7 @@
 import { addNewTodo, createOrLoadTodo } from "./storage/LocalStorageAction.js"
 import { renderTodo } from "./services/renderTodo.js";
 import { getRandomId } from "./services/randomID.js";
+import { removeTodo } from "./services/removeTodo.js";
 declare const bootstrap: any
 
 createOrLoadTodo();
@@ -27,8 +28,20 @@ addBtn?.addEventListener("click", () => {
 
     newTodoName.value = "";
     newTodoDes.value = "";
-
     renderTodo();
 });
 
+const todoList = document.querySelector("#table-data");
 
+todoList?.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+
+    if (target.classList.contains("delete-btn")) {
+        const id = target.dataset.id;
+
+        if (id) {
+            removeTodo(id);
+            renderTodo();
+        }
+    }
+});
