@@ -17,7 +17,7 @@ addBtn?.addEventListener("click", () => {
     if (!newTodoName.value.trim()) {
         return;
     }
-    
+
     addNewTodo({
         id: getRandomId(),
         name: newTodoName.value,
@@ -39,7 +39,7 @@ todoList?.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
     if (target.classList.contains("delete-btn")) {
         const id = target.dataset.id;
-        
+
         if (id) {
             removeTodo(id);
             renderTodo();
@@ -48,11 +48,20 @@ todoList?.addEventListener("click", (e) => {
 });
 
 document.addEventListener("click", (e) => {
-  const target = e.target as HTMLElement;
-  if (target.classList.contains("edit-btn")) {
-    const id = target.dataset.id;
-    if(id){
-        editTodoForm(id)
+    const target = e.target as HTMLElement;
+    if (target.classList.contains("edit-btn")) {
+        const id = target.dataset.id;
+        if (id) {
+            editTodoForm(id)
+            const saveChangesBtn = document.getElementById("saveChanges")
+            saveChangesBtn?.addEventListener("click", () => {
+                editTodo(id)
+                bootstrap.Modal
+                    .getOrCreateInstance(document.getElementById("editTodoModal"))
+                    .hide();
+                renderTodo()
+            })
+
+        }
     }
-  }
 });
