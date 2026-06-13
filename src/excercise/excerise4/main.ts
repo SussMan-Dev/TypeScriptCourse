@@ -33,7 +33,7 @@ addBtn?.addEventListener("click", () => {
     renderTodo();
 });
 
-const todoList = document.querySelector("#table-data");
+const todoList = document.querySelector("#table-data") as HTMLTableSectionElement
 
 todoList?.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
@@ -53,7 +53,7 @@ document.addEventListener("click", (e) => {
         const id = target.dataset.id;
         if (id) {
             editTodoForm(id)
-            const saveChangesBtn = document.getElementById("saveChanges")
+            const saveChangesBtn = document.getElementById("saveChanges") as HTMLButtonElement
             saveChangesBtn?.addEventListener("click", () => {
                 editTodo(id)
                 bootstrap.Modal

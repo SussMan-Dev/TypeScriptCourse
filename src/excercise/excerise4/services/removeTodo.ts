@@ -3,9 +3,9 @@ import { Todo } from "../types/todoInterface.js"
 
 const removeTodo = (inputId: string) => {
     const todoList: Todo[] = getDataLocalStorage()
-    const newTodos = todoList.filter(
+    const removeTodos = todoList.filter(
         todo => todo.id !== inputId
     )
-    updateTodos(newTodos)
+    updateTodos(removeTodos)
 }
 export { removeTodo }
