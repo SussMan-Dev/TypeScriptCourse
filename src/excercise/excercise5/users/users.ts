@@ -11,7 +11,7 @@ const fetchUser = async () => {
 }
 const userDisplay = async () => {
     const userData = await fetchUser()
-    const userTable = document.getElementById("users-table") as HTMLBodyElement
+    const userTable = document.getElementById("users-table") as HTMLTableSectionElement
     let html = ``
     if (!userTable) {
         return
@@ -25,7 +25,7 @@ const userDisplay = async () => {
           <td>${user.email}</td>
           <td>
             <button class="btn btn-primary">Edit</button>
-            <button class="btn btn-danger">Delete</button>            
+            <button class="btn btn-danger delete-btn" data-id="${user.id}">Delete</button>            
           </td>
         </tr>
         `
@@ -71,4 +71,26 @@ addUserBtn?.addEventListener("click", async () => {
     modal.hide()
     userDisplay()
 })
+
+
+const removeUser = async (id: string) =>{
+    await fetch(`${user_api}/${id}`,{
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+}
+const userTable =  document.querySelector("#users-table") as HTMLTableSectionElement
+userTable.addEventListener("click",(e)=>{
+    const target = e.target as HTMLElement
+    if(target.classList.contains("delete-btn")){
+        const id = target.dataset.id
+        if(id){
+            removeUser(id)
+            userDisplay()
+        }
+    }
+})
+
 userDisplay()
