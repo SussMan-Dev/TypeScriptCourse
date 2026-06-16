@@ -1,20 +1,89 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "An",
-      "email": "an@gmail.com"
+      "id": "FpRHlw7wXsE",
+      "name": "Nguyễn Văn An",
+      "email": "AnbeoGambling"
     },
     {
-      "id": 2,
-      "name": "Bình",
-      "email": "binh@gmail.com"
+      "id": "EUOgG7ZiYDE",
+      "name": "Đức Huy",
+      "email": "Sigma@gmail.com"
+    },
+    {
+      "id": "X-gFxdfDRt0",
+      "name": "Ngọc Lợi",
+      "email": "Ngul@gmail.com"
     }
   ],
   "posts": [
     {
-      "id": 1,
-      "title": "Hello JSON Server"
+      "id": "1",
+      "userId": 1,
+      "title": "Hello JSON Server",
+      "content": "Đây là bài viết đầu tiên."
+    },
+    {
+      "id": "2",
+      "userId": 2,
+      "title": "Learning React",
+      "content": "Tìm hiểu React từ cơ bản đến nâng cao."
+    },
+    {
+      "id": "3",
+      "userId": 3,
+      "title": "NodeJS Basics",
+      "content": "Các kiến thức cơ bản về NodeJS."
+    },
+    {
+      "id": "4",
+      "userId": 1,
+      "title": "ExpressJS Tutorial",
+      "content": "Xây dựng REST API với ExpressJS."
+    },
+    {
+      "id": "5",
+      "userId": 4,
+      "title": "MongoDB Guide",
+      "content": "Làm việc với MongoDB hiệu quả."
     }
-  ]
+  ],
+  "blogs": [
+    {
+      "id": "1",
+      "authorId": 1,
+      "title": "Frontend Roadmap 2025",
+      "description": "Lộ trình học Frontend cho người mới.",
+      "category": "Frontend"
+    },
+    {
+      "id": "2",
+      "authorId": 2,
+      "title": "Backend Development",
+      "description": "Các kỹ năng cần có của Backend Developer.",
+      "category": "Backend"
+    },
+    {
+      "id": "3",
+      "authorId": 3,
+      "title": "JavaScript Tips",
+      "description": "Những mẹo hữu ích khi làm việc với JavaScript.",
+      "category": "Programming"
+    },
+    {
+      "id": "4",
+      "authorId": 4,
+      "title": "TypeScript Best Practices",
+      "description": "Các best practice khi dùng TypeScript.",
+      "category": "Programming"
+    },
+    {
+      "id": "5",
+      "authorId": 2,
+      "title": "Database Design",
+      "description": "Thiết kế cơ sở dữ liệu hiệu quả.",
+      "category": "Database"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
