@@ -24,8 +24,8 @@ const userDisplay = async () => {
           <td>${user.name}</td>
           <td>${user.email}</td>
           <td>
-            <button class="btn btn-primary">Edit</button>
-            <button class="btn btn-danger delete-btn" data-id="${user.id}">Delete</button>            
+            <button type="button" class="btn btn-primary edit-btn" data-bs-toggle="modal" data-bs-target="#editUserModal" data-id="${user.id}">Edit</button>
+            <button class="btn btn-danger delete-btn" data-id="${user.id}">Delete</button>
           </td>
         </tr>
         `
@@ -73,24 +73,62 @@ addUserBtn?.addEventListener("click", async () => {
 })
 
 
-const removeUser = async (id: string) =>{
-    await fetch(`${user_api}/${id}`,{
+const removeUser = async (id: string) => {
+    await fetch(`${user_api}/${id}`, {
         method: "DELETE",
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
         }
     })
 }
-const userTable =  document.querySelector("#users-table") as HTMLTableSectionElement
-userTable.addEventListener("click",(e)=>{
+
+const displayEditForm = async (id: string) => {
+    const res = await fetch(`${user_api}/${id}`)
+    const data = await res.json() as UserState
+    const editUserName = document.getElementById("user-name-edit") as HTMLInputElement
+    const editUserEmail = document.getElementById("user-email-edit") as HTMLInputElement
+    editUserEmail.value = data.email
+    editUserName.value = data.name
+}
+
+const saveNewChanges = async (id: string, name: string, email: string) => {
+    const res = await fetch(`${user_api}/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name,
+            email
+        })
+    })
+    if (res.ok) {
+        console.log("editing successful");
+    }
+}
+
+const userTable = document.querySelector("#users-table") as HTMLTableSectionElement
+userTable.addEventListener("click", (e) => {
     const target = e.target as HTMLElement
-    if(target.classList.contains("delete-btn")){
+    if (target.classList.contains("delete-btn")) {
         const id = target.dataset.id
-        if(id){
+        if (id) {
             removeUser(id)
             userDisplay()
         }
     }
+    if (target.classList.contains("edit-btn")) {
+        const id = target.dataset.id
+        if (id) {
+            displayEditForm(id)
+            const submitEditBtn = document.getElementById("submitEditBtn") as HTMLButtonElement
+            submitEditBtn.addEventListener("click", () => {
+                const editUserName = document.getElementById("user-name-edit") as HTMLInputElement
+                const editUserEmail = document.getElementById("user-email-edit") as HTMLInputElement
+                saveNewChanges(id,editUserName.value,editUserEmail.value)
+                userDisplay()
+            })
+        }
+    }
 })
-
 userDisplay()
